@@ -3,11 +3,11 @@
 #include<errno.h>
 #include<string.h>
 #include "file_functions.h"
-#include "sort_functions.h"
 
 #define CPU_SIZE 100000
+//280650 lines sorted per minute for 100000 bytes RAM.
 
-int read_file(FILE *fptr){
+int read_file(FILE *fptr, int flags){
     FILE *temp_fptr;
     char *filenames = (char *)(malloc(sizeof(char)*20));
     int file_count = 0;
@@ -34,7 +34,6 @@ int read_file(FILE *fptr){
     }
     fclose(fptr);
     fclose(temp_fptr);
-
     memset(filenames,0,50);
     fptr = fopen("fileNames.txt","w");
     for (int i = 0 ; i <= file_count  ; i++){

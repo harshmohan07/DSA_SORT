@@ -14,14 +14,36 @@ int main(){
     char *line1 = NULL, *line2 = NULL;
     size_t len1 = 0, len2 = 0;
     ssize_t read1 = 0, read2 = 0;
+    fpos_t pos1 = 0,pos2 = 0;
+
+/////////////////// Main Algo //////////////////////////
 
 
-    for (int i = 0 ; i < 100000; i++){
+    for (int i = 0 ; i < 10000000; i++){
         char *num = (char *)(malloc(50));
         sprintf(num, "%d", rand());
         strncat(num,"\n",1);
         fprintf(fptr,"%s",num);
     }
+
+/////////////////////////////////////////////////////////
+
+/////////////////// Testings ////////////////////////////
+
+    // if ((read1 = getline(&line1, &len1, fptr)) != -1){
+    //     printf("%s",line1);
+    //     pos1 += len1;
+    //     line1 = NULL;
+    // }
+    // fclose(fptr);
+    // fptr = fopen("test.txt", "w");
+    // // printf("%lld\n",pos1);
+    // fsetpos(fptr,&pos1);
+    // fputs("Pokemon",fptr);
+    // printf("%lld\n",pos1);
+
+
+
 
     // char* str1 = "1234";
     // char* str2 = "4321";

@@ -1,1 +1,1 @@
-int read_file(FILE *fptr);
+int read_file(FILE *fptr, int flags);
