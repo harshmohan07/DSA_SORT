@@ -10,7 +10,7 @@ long get_mem_usage(){
 
 int main(){
     FILE *fptr;
-    fptr = fopen("text.txt","w");
+    fptr = fopen("text3.txt","w");
     char *line1 = NULL, *line2 = NULL;
     size_t len1 = 0, len2 = 0;
     ssize_t read1 = 0, read2 = 0;
@@ -19,7 +19,7 @@ int main(){
 /////////////////// Main Algo //////////////////////////
 
 
-    for (int i = 0 ; i < 10000000; i++){
+    for (int i = 0 ; i < 100000; i++){
         char *num = (char *)(malloc(50));
         sprintf(num, "%d", rand());
         strncat(num,"\n",1);

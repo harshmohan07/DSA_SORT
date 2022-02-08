@@ -406,16 +406,18 @@ void Merger(int file_count ,int flags ,char *name_of_file){
             }
         }
     }
-    char *remove = (char *)(malloc(sizeof(char)*20));
-    for (int i = 0 ; i < file_count ; i++){
-        strcpy(remove,rm);
-        strcat(remove,files[i]);
-        system(remove);
-        free(files[i]);
-        files[i] = NULL;
-        memset(remove,0,20);
+    if ((flags & 1<<3) != 0){
+        char *remove = (char *)(malloc(sizeof(char)*20));
+        for (int i = 0 ; i < file_count ; i++){
+            strcpy(remove,rm);
+            strcat(remove,files[i]);
+            system(remove);
+            free(files[i]);
+            files[i] = NULL;
+            memset(remove,0,20);
+        }
+        fclose(output);
     }
-    fclose(output);
 }
 
 //In the function to make, 

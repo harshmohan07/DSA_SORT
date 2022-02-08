@@ -1,1 +1,1 @@
-int read_file(FILE *fptr, int flags);
+void read_file(FILE *fptr, int flags, int *file_count, fpos_t *name_file);
