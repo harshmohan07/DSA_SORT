@@ -35,7 +35,11 @@ void read_file(FILE *fptr, int flags, int *file_count, fpos_t *name_file){
     fclose(fptr);
     fclose(temp_fptr);
     memset(filenames,0,50);
-    fptr = fopen("fileNames.txt","r+");
+    if (initial_file_count == 0){
+        fptr = fopen("fileNames.txt","w");
+    }else{
+        fptr = fopen("fileNames.txt","r+");
+    }
     fsetpos(fptr,name_file);
     for (int i = initial_file_count ; i <= *file_count  ; i++){
         sprintf(filenames, "%d", i);

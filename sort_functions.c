@@ -211,14 +211,14 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                 }else{
                     //Here I'll Have to find which string is least lexiographically, 
                     //print/save it and make that position NULL.
-                    for (int i = 0 ; i < file_count-1 ; i++){
+                    for (int i = 0 ; i < file_count ; i++){
                         if (string_compares[i] != NULL){
                             temp1 = string_compares[i];
                             min_ind = i;
                             break;
                         }
                     }
-                    for (int i = 0 ; i < file_count ; i++){
+                    for (int i = min_ind ; i < file_count ; i++){
                         if (string_compares[i] == NULL){
                             continue;
                         }
@@ -267,14 +267,14 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                 }else{
                     //Here I'll Have to find which string is least lexiographically, 
                     //print/save it and make that position NULL.
-                    for (int i = 0 ; i < file_count-1 ; i++){
+                    for (int i = 0 ; i < file_count ; i++){
                         if (string_compares[i] != NULL){
                             temp1 = string_compares[i];
                             min_ind = i;
                             break;
                         }
                     }
-                    for (int i = 0 ; i < file_count-1 ; i++){
+                    for (int i = min_ind+1 ; i < file_count ; i++){
                         if (string_compares[i] == NULL){
                             continue;
                         }
@@ -325,14 +325,14 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                 }else{
                     //Here I'll Have to find which string is least lexiographically, 
                     //print/save it and make that position NULL.
-                    for (int i = 0 ; i < file_count-1 ; i++){
+                    for (int i = 0 ; i < file_count ; i++){
                         if (string_compares[i] != NULL){
                             temp1 = string_compares[i];
                             min_ind = i;
                             break;
                         }
                     }
-                    for (int i = 0 ; i < file_count-1 ; i++){
+                    for (int i = 0 ; i < file_count ; i++){
                         if (string_compares[i] == NULL){
                             continue;
                         }
@@ -381,7 +381,7 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                 }else{
                     //Here I'll Have to find which string is least lexiographically, 
                     //print/save it and make that position NULL.
-                    for (int i = 0 ; i < file_count-1 ; i++){
+                    for (int i = 0 ; i < file_count ; i++){
                         if (string_compares[i] != NULL){
                             temp1 = string_compares[i];
                             min_ind = i;
@@ -406,18 +406,16 @@ void Merger(int file_count ,int flags ,char *name_of_file){
             }
         }
     }
-    if ((flags & 1<<3) != 0){
-        char *remove = (char *)(malloc(sizeof(char)*20));
-        for (int i = 0 ; i < file_count ; i++){
-            strcpy(remove,rm);
-            strcat(remove,files[i]);
-            system(remove);
-            free(files[i]);
-            files[i] = NULL;
-            memset(remove,0,20);
-        }
-        fclose(output);
+    char *remove = (char *)(malloc(sizeof(char)*20));
+    for (int i = 0 ; i < file_count ; i++){
+        strcpy(remove,rm);
+        strcat(remove,files[i]);
+        system(remove);
+        free(files[i]);
+        files[i] = NULL;
+        memset(remove,0,20);
     }
+    fclose(output);
 }
 
 //In the function to make, 
