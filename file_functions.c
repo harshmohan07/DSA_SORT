@@ -7,6 +7,98 @@
 #define CPU_SIZE 100000
 //280650 lines sorted per minute for 100000 bytes RAM.
 
+int check_sorted (FILE *fptr, int flags){
+    char *line = NULL;
+    size_t len = 0;
+    ssize_t read = 0;
+    char *temp = NULL;
+    if ((flags & 1<<1) != 0){
+        if ((flags & 1<<2) != 0){
+            while ((read = getline(&line, &len, fptr)) != -1){
+                if (temp == NULL){
+                    temp = line;
+                    line = NULL;
+                    continue;
+                }else{
+                    if (atoi(temp) < atoi(line)){
+                        temp = NULL;
+                        line = NULL;
+                        rewind(fptr);
+                        return 1;    
+                    }else{
+                        temp = line;
+                        line = NULL;
+                    }
+                }
+            }
+            return 0;
+        }else{
+            while ((read = getline(&line, &len, fptr)) != -1){
+                if (temp == NULL){
+                    temp = line;
+                    line = NULL;
+                    continue;
+                }else{
+                    if (atoi(temp) > atoi(line)){
+                        temp = NULL;
+                        line = NULL;
+                        rewind(fptr);
+                        return 1;    
+                    }else{
+                        temp = line;
+                        line = NULL;
+                    }
+                }
+            }
+            temp = NULL;
+            line = NULL;
+            rewind(fptr);
+            return 0;
+        }
+    }else if ((flags & 1<<0) != 0){
+        if ((flags & 1<<2) != 0){
+            while ((read = getline(&line, &len, fptr)) != -1){
+                if (temp == NULL){
+                    temp = line;
+                    line = NULL;
+                    continue;
+                }else{
+                    if (strcmp(temp,line) < 0){
+                        temp = NULL;
+                        line = NULL;
+                        rewind(fptr);
+                        return 1;    
+                    }else{
+                        temp = line;
+                        line = NULL;
+                    }
+                }
+            }
+            return 0;
+        }else{
+            while ((read = getline(&line, &len, fptr)) != -1){
+                if (temp == NULL){
+                    temp = line;
+                    line = NULL;
+                    continue;
+                }else{
+                    if (strcmp(temp,line) > 0){
+                        temp = NULL;
+                        line = NULL;
+                        rewind(fptr);
+                        return 1;    
+                    }else{
+                        temp = line;
+                        line = NULL;
+                    }
+                }
+            }
+            return 0;
+        }
+    }
+    return 0;
+}
+
 void read_file(FILE *fptr, int flags, int *file_count, fpos_t *name_file){
     int initial_file_count = *file_count;
     FILE *temp_fptr;
