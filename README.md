@@ -1,6 +1,6 @@
 # Sort Command Implementation in C
 
-## Workes for External Sorting of Files using Limited RAM specified in the program itself and also provides RAM used for a particular operation done.
+## Works for External Sorting of Files using Limited RAM specified in the program itself and also provides RAM used for a particular operation done.
 
 ### Working of Algorithm :
 
