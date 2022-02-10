@@ -14,6 +14,16 @@ int main(int argc, char** argv){
     long baseline = get_mem_usage();
     FILE *fptr;
     char *name= NULL;
+    if (strcmp(argv[1],"--help") == 0){
+        printf("*************** Sort Command Implementation in C ***************\n");
+        printf("-r Sorting the file in descending order\n");
+        printf("-o Store the output of the result in a file specified as a parameter\n");
+        printf("-d Sort based on order of Dictionery\n");
+        printf("-n Sort based on numerical values\n");
+        printf("-m Merges files specified as operands in a sorted order\n");
+        printf("-c Checking if the given file is sorted or not\n");
+        return 0;
+    }
     for (i= 1 ; i < argc-1 ; i++){
         if (strcmp(argv[i],"-o") == 0){
             name = argv[i+1];
@@ -43,7 +53,7 @@ int main(int argc, char** argv){
         }
         long read_usage = get_mem_usage();
         printf("RAM usage for Segregating : %ld\n",read_usage - baseline);
-        printf("%d\n",file_count);
+        printf("Total Size of files to be sorted is %d MB\n", file_count/10);
         Final_Merger(file_count, flags, name);
         long final_usage = get_mem_usage();
         printf("final_usage : %ld + %ld\n",baseline, final_usage - baseline);
@@ -62,6 +72,7 @@ int main(int argc, char** argv){
             }
         }
         read_file(fptr, flags,&file_count,name_file);
+        printf("Total Size of files to be sorted is %d MB\n", file_count/10);
         fclose(fptr);
         long read_usage = get_mem_usage();
         printf("RAM usage for Segregating : %ld\n",read_usage - baseline);
@@ -69,5 +80,6 @@ int main(int argc, char** argv){
         long final_usage = get_mem_usage();
         printf("final_usage : %ld + %ld\n",baseline, final_usage - baseline);
     }
+    system("rm filenames.txt");
 }
 

@@ -32,6 +32,7 @@ int partition_int_reverse(char *** a, int low, int high)
     arr[i+1] = arr[high];
     arr[high] = temp1;
     temp1 = NULL;
+    arr = NULL;
     return (i + 1);
 }
 
@@ -53,6 +54,7 @@ int partition_int(char *** a, int low, int high)
     arr[i+1] = arr[high];
     arr[high] = temp1;
     temp1 = NULL;
+    arr = NULL;
     return (i + 1);
 }
 
@@ -74,6 +76,7 @@ int partition_strings_reverse (char *** a, int low, int high)
     arr[i+1] = arr[high];
     arr[high] = temp1;
     temp1 = NULL;
+    arr = NULL;
     return (i + 1);
 }
 
@@ -95,6 +98,7 @@ int partition_strings (char *** a, int low, int high)
     arr[i+1] = arr[high];
     arr[high] = temp1;
     temp1 = NULL;
+    arr = NULL;
     return (i + 1);
 }
  
