@@ -4,8 +4,12 @@
 #include<string.h>
 #include "file_functions.h"
 
-#define CPU_SIZE 100000
-//280650 lines sorted per minute for 100000 bytes RAM.
+#define CPU_SIZE 1000000
+//Divided by 10 actually while using because while running it actually,
+//Recursion Stack occupies some excess space and to keep that below our
+//required size, we usually divide files 10x smaller than the actual RAM
+//to be utilised. 
+
 
 int check_sorted (FILE *fptr, int flags){
     char *line = NULL;
@@ -112,7 +116,7 @@ void read_file(FILE *fptr, int flags, int *file_count, fpos_t *name_file){
     memset(filenames,0,20);
     while ((read = getline(&line, &len, fptr)) != -1) {
         current_size += read;
-        if (current_size >= CPU_SIZE){
+        if (current_size >= CPU_SIZE/10){
             fclose(temp_fptr);
             (*file_count) += 1;
             current_size = 0;

@@ -135,8 +135,6 @@ void quickSort(char *** arr, int low, int high, int flags)
     }
 }
 
-//Make changes in Merger to make it fast.
-
 void Merger(int file_count ,int flags ,char *name_of_file){
     char *line = NULL;
     size_t len;
@@ -198,7 +196,6 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                     }
                     fclose(fptr);
                 }
-                // printf("%d\n",current_lines_count);
                 if (current_lines_count == 0){
                     break;
                 }else if(current_lines_count == 1){
@@ -213,8 +210,6 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                         } 
                     }
                 }else{
-                    //Here I'll Have to find which string is least lexiographically, 
-                    //print/save it and make that position NULL.
                     for (int i = 0 ; i < file_count ; i++){
                         if (string_compares[i] != NULL){
                             temp1 = string_compares[i];
@@ -254,7 +249,6 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                     }
                     fclose(fptr);
                 }
-                // printf("%d\n",current_lines_count);
                 if (current_lines_count == 0){
                     break;
                 }else if(current_lines_count == 1){
@@ -269,8 +263,6 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                         } 
                     }
                 }else{
-                    //Here I'll Have to find which string is least lexiographically, 
-                    //print/save it and make that position NULL.
                     for (int i = 0 ; i < file_count ; i++){
                         if (string_compares[i] != NULL){
                             temp1 = string_compares[i];
@@ -312,7 +304,6 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                     }
                     fclose(fptr);
                 }
-                // printf("%d\n",current_lines_count);
                 if (current_lines_count == 0){
                     break;
                 }else if(current_lines_count == 1){
@@ -327,8 +318,6 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                         } 
                     }
                 }else{
-                    //Here I'll Have to find which string is least lexiographically, 
-                    //print/save it and make that position NULL.
                     for (int i = 0 ; i < file_count ; i++){
                         if (string_compares[i] != NULL){
                             temp1 = string_compares[i];
@@ -368,7 +357,6 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                     }
                     fclose(fptr);
                 }
-                // printf("%d\n",current_lines_count);
                 if (current_lines_count == 0){
                     break;
                 }else if(current_lines_count == 1){
@@ -383,8 +371,6 @@ void Merger(int file_count ,int flags ,char *name_of_file){
                         } 
                     }
                 }else{
-                    //Here I'll Have to find which string is least lexiographically, 
-                    //print/save it and make that position NULL.
                     for (int i = 0 ; i < file_count ; i++){
                         if (string_compares[i] != NULL){
                             temp1 = string_compares[i];
@@ -421,10 +407,6 @@ void Merger(int file_count ,int flags ,char *name_of_file){
     }
     fclose(output);
 }
-
-//In the function to make, 
-//1. Sort one of the two files using Merge Sort (Can be done).
-//2. Merge two files and name it seperatly.
 
 void Final_Merger(int file_count, int flags, char *name_of_file){
     FILE *fileptr, *filereader;
