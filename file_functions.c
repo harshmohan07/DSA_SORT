@@ -5,7 +5,7 @@
 #include "file_functions.h"
 
 #define CPU_SIZE 1000000
-//Divided by 10 actually while using because while running it actually,
+//Divided by 10 actually while using because while running ,
 //Recursion Stack occupies some excess space and to keep that below our
 //required size, we usually divide files 10x smaller than the actual RAM
 //to be utilised. 
